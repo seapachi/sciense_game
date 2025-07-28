@@ -1,0 +1,196 @@
+/* 基本スタイル */
+body {
+    font-family: 'Hiragino Maru Gothic ProN', 'メイリオ', Meiryo, sans-serif;
+    background-color: #f0f8ff;
+    color: #333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    -webkit-user-select: none;
+    user-select: none;
+}
+
+#game-container {
+    width: 100%;
+    max-width: 1024px; /* iPad mini 横向きを想定 */
+    height: 100%;
+    max-height: 768px;
+    background: #fff;
+    border-radius: 20px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    box-sizing: border-box;
+    text-align: center;
+}
+
+.screen {
+    display: none;
+    width: 100%;
+    height: 100%;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.screen.active {
+    display: flex;
+}
+
+h1 {
+    font-size: 3.5rem;
+    color: #ff6347;
+    line-height: 1.2;
+    margin-bottom: 40px;
+}
+
+h2 {
+    font-size: 3rem;
+    color: #1e90ff;
+}
+
+p {
+    font-size: 1.5rem;
+}
+
+/* ボタン */
+.btn {
+    font-family: inherit;
+    font-size: 1.8rem;
+    font-weight: bold;
+    padding: 15px 30px;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    min-width: 300px;
+    background-color: #1e90ff;
+    color: white;
+    box-shadow: 0 5px 0 #005fbd;
+    margin-top: 10px;
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 7px 0 #005fbd;
+}
+
+.btn:active {
+    transform: translateY(5px);
+    box-shadow: none;
+}
+
+/* クイズ画面 */
+#quiz-header {
+    position: absolute;
+    top: 40px;
+    right: 60px;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #555;
+}
+
+#question-container {
+    background-color: #e3f2fd;
+    padding: 30px;
+    border-radius: 15px;
+    margin-bottom: 30px;
+    width: 90%;
+    min-height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#question-text {
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+.btn-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    width: 90%;
+}
+
+.option {
+    background-color: #ffa500;
+    box-shadow: 0 5px 0 #cc8400;
+}
+.option:hover {
+    box-shadow: 0 7px 0 #cc8400;
+}
+.option:disabled {
+    cursor: not-allowed;
+    opacity: 0.7;
+}
+.option.correct {
+    background-color: #32cd32;
+    color: white;
+    box-shadow: 0 5px 0 #228b22;
+    transform: translateY(0);
+}
+.option.incorrect {
+    background-color: #ff4500;
+    color: white;
+    box-shadow: 0 5px 0 #b22222;
+    transform: translateY(0);
+}
+
+#feedback-container {
+    margin-top: 20px;
+    min-height: 120px;
+}
+
+#feedback-text {
+    font-size: 2.5rem;
+    font-weight: bold;
+}
+#feedback-text.correct {
+    color: #32cd32;
+}
+#feedback-text.incorrect {
+    color: #ff4500;
+}
+
+#explanation-text {
+    font-size: 1.2rem;
+    background: #f1f1f1;
+    padding: 10px;
+    border-radius: 10px;
+    margin-top: 10px;
+    width: 80%;
+    max-width: 700px;
+    text-align: left;
+    visibility: hidden; /* 最初は非表示 */
+}
+
+#next-button {
+    background-color: #9acd32;
+    box-shadow: 0 5px 0 #6b8e23;
+}
+#next-button:hover {
+    box-shadow: 0 7px 0 #6b8e23;
+}
+
+/* 結果画面 */
+#score-text {
+    font-size: 2.5rem;
+    margin: 20px 0;
+}
+#result-message {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #ff6347;
+}
+
+/* ユーティリティ */
+.hidden {
+    display: none !important;
+}
