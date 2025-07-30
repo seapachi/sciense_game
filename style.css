@@ -81,9 +81,10 @@ body {
     width: 100%;
     height: 100%;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start; /* centerから変更 */
     align-items: center;
-    gap: 30px; /* スクリーン内要素の間隔を統一 */
+    gap: 20px; /* 間隔を調整 */
+    padding-top: 10px; /* 上部パディング追加 */
 }
 
 .screen.active {
@@ -118,9 +119,9 @@ p {
 /* ボタンスタイル - よりポップに */
 .btn {
     font-family: inherit;
-    font-size: clamp(1.6rem, 4vw, 2rem);
+    font-size: 1.5rem; /* 小学3年生向け固定サイズ */
     font-weight: 800;
-    padding: 18px 30px; /* パディングを増加 */
+    padding: 14px 20px; /* パディングを調整 */
     border: none;
     border-radius: 50px;
     cursor: pointer;
@@ -161,9 +162,9 @@ p {
 /* クイズ画面の改善 */
 #quiz-header {
     width: 100%;
-    padding: 20px 0 30px 0; /* 上下の間隔を増加 */
-    margin-bottom: 25px;
-    font-size: clamp(1.6rem, 4vw, 2rem);
+    padding: 15px 0 20px 0; /* パディングを調整 */
+    margin-bottom: 15px; /* マージンを調整 */
+    font-size: 1.4rem; /* 固定サイズ */
     font-weight: bold;
     color: var(--text-color);
     text-align: right;
@@ -177,19 +178,21 @@ p {
     text-overflow: ellipsis;
     background: linear-gradient(135deg, var(--accent-color), var(--secondary-color));
     color: white;
-    padding: 12px 24px; /* パディングを増加 */
+    padding: 10px 20px; /* パディングを調整 */
     border-radius: 30px;
     box-shadow: 0 4px 15px rgba(102, 187, 106, 0.3);
     font-weight: 800;
+    font-size: 1.4rem; /* 固定サイズ */
 }
 
 #question-container {
     background: linear-gradient(135deg, #e8f5e8, #e3f2fd);
-    padding: clamp(30px, 6vw, 50px) clamp(25px, 5vw, 40px); /* 上下のパディングを増加 */
+    padding: 20px 25px; /* パディングを調整 */
     border-radius: 20px;
-    margin-bottom: 35px;
+    margin-bottom: 20px; /* マージンを調整 */
     width: 100%;
-    flex-grow: 1;
+    flex-grow: 0; /* 自動拡張を無効化 */
+    flex-shrink: 0; /* 縮小を防止 */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -197,8 +200,8 @@ p {
     border: 3px solid rgba(255, 64, 129, 0.1);
     box-shadow: 0 6px 20px rgba(0,0,0,0.08);
     position: relative;
-    min-height: 180px; /* 最小高さを設定 */
-    overflow: hidden; /* はみ出し防止 */
+    min-height: 160px; /* 最小高さを調整 */
+    overflow: hidden;
 }
 
 /* 質問コンテナの装飾 - 位置を調整 */
@@ -213,25 +216,25 @@ p {
 }
 
 #question-text {
-    font-size: clamp(1.6rem, 4.5vw, 2.2rem); /* フォントサイズを調整 */
+    font-size: 1.6rem; /* 小学3年生向け固定サイズ */
     font-weight: 700;
-    line-height: 1.6; /* 行間を広げる */
+    line-height: 1.5; /* 行間を調整 */
     word-break: keep-all;
     overflow-wrap: break-word;
     color: var(--text-color);
     width: 100%;
     max-width: 100%;
-    padding: 0 10px; /* 左右にパディングを追加 */
+    padding: 0 10px;
     box-sizing: border-box;
-    hyphens: auto; /* 自動改行を有効化 */
+    hyphens: auto;
 }
 
 .btn-grid {
     display: grid;
     grid-template-columns: 1fr;
-    gap: 20px; /* ギャップを増加 */
+    gap: 12px; /* ギャップを調整 */
     width: 100%;
-    margin: 0 auto 30px auto; /* 下マージンを追加 */
+    margin: 0 auto 15px auto; /* 下マージンを調整 */
 }
 
 /* 選択肢ボタンの個別カラー */
@@ -273,16 +276,15 @@ p {
 
 /* フィードバック表示の改善 */
 #feedback-container {
-    margin-top: 25px;
+    margin-top: 15px; /* マージンを調整 */
     text-align: center;
-    min-height: 120px; /* 最小高さを設定 */
 }
 
 #feedback-text {
-    font-size: clamp(2rem, 5vw, 2.8rem);
+    font-size: 1.8rem; /* サイズを調整 */
     font-weight: 900;
-    margin-bottom: 15px;
-    padding: 15px 25px;
+    margin-bottom: 10px; /* マージンを調整 */
+    padding: 12px 20px; /* パディングを調整 */
     border-radius: 20px;
     display: inline-block;
 }
@@ -308,12 +310,12 @@ p {
 }
 
 #explanation-text {
-    font-size: clamp(1.4rem, 3.5vw, 1.8rem);
+    font-size: 1.4rem; /* サイズを調整 */
     line-height: 1.6;
     background: #f8f9fa;
-    padding: 20px;
+    padding: 15px; /* パディングを調整 */
     border-radius: 15px;
-    margin: 20px 0;
+    margin: 10px 0; /* マージンを調整 */
     border-left: 5px solid var(--accent-color);
     box-shadow: 0 4px 10px rgba(0,0,0,0.05);
 }
@@ -358,7 +360,22 @@ p {
     }
 
     #question-text {
-        font-size: clamp(2rem, 3vw, 2.6rem);
+        font-size: clamp(1.8rem, 3vw, 2.2rem);
+    }
+
+    .btn {
+        font-size: clamp(1.6rem, 4vw, 2rem);
+        padding: 16px 25px;
+    }
+
+    #feedback-text {
+        font-size: clamp(2rem, 5vw, 2.8rem);
+        padding: 15px 25px;
+    }
+
+    #explanation-text {
+        font-size: clamp(1.4rem, 3.5vw, 1.8rem);
+        padding: 20px;
     }
 }
 
@@ -388,39 +405,51 @@ p {
     }
 
     #quiz-header {
-        margin-bottom: 20px;
-        padding: 15px 0 20px 0;
+        margin-bottom: 15px;
+        padding: 10px 0 15px 0;
     }
 
     #question-container {
-        padding: 25px 20px; /* スマホでのパディングを調整 */
-        margin-bottom: 25px;
-        min-height: 160px; /* スマホでの最小高さ */
+        padding: 20px; /* パディングを調整 */
+        margin-bottom: 15px;
+        min-height: 140px; /* 高さを調整 */
     }
 
     #question-container::before {
-        font-size: 1.6rem; /* スマホでの絵文字サイズ */
-        top: 10px;
-        right: 12px;
+        font-size: 1.4rem; /* 絵文字サイズを調整 */
+        top: 8px;
+        right: 10px;
     }
 
     #question-text {
-        font-size: clamp(1.4rem, 4vw, 1.8rem); /* スマホでのフォントサイズ */
+        font-size: 1.5rem; /* フォントサイズを調整 */
         padding: 0 8px;
-        line-height: 1.7; /* 行間をさらに広げる */
+        line-height: 1.5;
     }
 
     .btn {
-        padding: 16px 20px;
+        padding: 12px 16px; /* パディングを調整 */
+        font-size: 1.4rem; /* フォントサイズを調整 */
     }
 
     .btn-grid {
-        gap: 16px;
-        margin-bottom: 25px;
+        gap: 10px;
+        margin-bottom: 10px;
     }
 
     .screen {
-        gap: 20px;
+        gap: 15px; /* 間隔をさらに縮小 */
+        padding-top: 5px;
+    }
+
+    #feedback-text {
+        font-size: 1.6rem;
+        padding: 10px 16px;
+    }
+
+    #explanation-text {
+        font-size: 1.3rem;
+        padding: 12px;
     }
 }
 
