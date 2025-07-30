@@ -216,7 +216,7 @@ p {
 }
 
 #question-text {
-    font-size: 1.6rem; /* 小学3年生向け固定サイズ */
+    font-size: 2rem; /* 小学3年生向け固定サイズ */
     font-weight: 700;
     line-height: 1.5; /* 行間を調整 */
     word-break: keep-all;
