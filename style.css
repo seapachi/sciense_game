@@ -47,7 +47,7 @@ body {
     display: flex;
     flex-direction: column;
     padding: 40px 30px; /* パディングを大幅に増加 */
-    overflow: hidden;
+    overflow: visible; /* hiddenから変更 */
     position: relative;
 }
 
@@ -116,8 +116,11 @@ p {
     line-height: 1.5;
 }
 
-/* ボタンスタイル - よりポップに */
+/* ボタンのクリックを確実にするためのスタイル */
 .btn {
+    position: relative;
+    z-index: 10;
+    pointer-events: auto !important;
     font-family: inherit;
     font-size: 1.5rem; /* 小学3年生向け固定サイズ */
     font-weight: 800;
@@ -157,6 +160,17 @@ p {
 .btn:active {
     transform: translateY(6px);
     box-shadow: 0 2px 0 #d81b60, 0 4px 15px rgba(216, 27, 96, 0.2);
+}
+
+/* ボタングリッドのスタックコンテキストを調整 */
+.btn-grid {
+    position: relative;
+    z-index: 5;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 12px; /* ギャップを調整 */
+    width: 100%;
+    margin: 0 auto 15px auto; /* 下マージンを調整 */
 }
 
 /* クイズ画面の改善 */
@@ -229,12 +243,18 @@ p {
     hyphens: auto;
 }
 
-.btn-grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 12px; /* ギャップを調整 */
-    width: 100%;
-    margin: 0 auto 15px auto; /* 下マージンを調整 */
+/* クイズ画面のスタックコンテキストを調整 */
+#quiz-screen {
+    position: relative;
+    z-index: 2;
+}
+
+/* フィードバックコンテナのスタックコンテキストを調整 */
+#feedback-container {
+    position: relative;
+    z-index: 3;
+    margin-top: 15px; /* マージンを調整 */
+    text-align: center;
 }
 
 /* 選択肢ボタンの個別カラー */
@@ -275,11 +295,6 @@ p {
 }
 
 /* フィードバック表示の改善 */
-#feedback-container {
-    margin-top: 15px; /* マージンを調整 */
-    text-align: center;
-}
-
 #feedback-text {
     font-size: 1.8rem; /* サイズを調整 */
     font-weight: 900;
@@ -352,30 +367,14 @@ p {
 
     .btn-grid {
         grid-template-columns: 1fr 1fr;
-        gap: 24px;
+        gap: 16px;
+        max-width: 800px;
+        margin: 0 auto;
     }
-
-    #game-container {
-        padding: 50px 40px;
-    }
-
-    #question-text {
-        font-size: clamp(2rem, 3vw, 2.2rem);
-    }
-
-    .btn {
-        font-size: clamp(1.8rem, 4vw, 2rem);
-        padding: 16px 25px;
-    }
-
-    #feedback-text {
-        font-size: clamp(2rem, 5vw, 2.8rem);
-        padding: 15px 25px;
-    }
-
-    #explanation-text {
-        font-size: clamp(1.7rem, 3.5vw, 1.8rem);
-        padding: 20px;
+    
+    .btn:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 8px 0 #d81b60, 0 12px 25px rgba(216, 27, 96, 0.4);
     }
 }
 
