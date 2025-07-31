@@ -177,7 +177,7 @@ p {
 #quiz-header {
     width: 100%;
     padding: 15px 0 20px 0; /* パディングを調整 */
-    margin-bottom: 15px; /* マージンを調整 */
+    margin-bottom: 0px; /* マージンを調整 15->0 */
     font-size: 1.4rem; /* 固定サイズ */
     font-weight: bold;
     color: var(--text-color);
@@ -421,14 +421,14 @@ p {
     }
 
     #question-text {
-        font-size: 1.5rem; /* フォントサイズを調整 */
+        font-size: 1.8rem; /* フォントサイズを調整  1.5->1.8 */
         padding: 0 8px;
         line-height: 1.5;
     }
 
     .btn {
         padding: 12px 16px; /* パディングを調整 */
-        font-size: 1.4rem; /* フォントサイズを調整 */
+        font-size: 1.8rem; /* フォントサイズを調整 1.4->1.8 */
     }
 
     .btn-grid {
