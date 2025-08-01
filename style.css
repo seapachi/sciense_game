@@ -177,7 +177,7 @@ p {
 #quiz-header {
     width: 100%;
     padding: 15px 0 20px 0; /* パディングを調整 */
-    margin-bottom: 0px; /* マージンを調整 15->0 */
+    margin-bottom: 15px; /* マージンを調整/
     font-size: 1.4rem; /* 固定サイズ */
     font-weight: bold;
     color: var(--text-color);
@@ -404,7 +404,7 @@ p {
     }
 
     #quiz-header {
-        margin-bottom: 15px;
+        margin-bottom: 0px; /* マージンを調整 15->0 */
         padding: 10px 0 15px 0;
     }
 
