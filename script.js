@@ -30,7 +30,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // CSVファイルを読み込む
     async function loadQuizData() {
         try {
-            const response = await fetch('quiz_data.csv');
+            const response = await fetch('quiz_data2.csv');
             const csvText = await response.text();
             // BOMを削除し、ヘッダーを除いて行ごとに分割
             const dataRows = csvText.trim().replace(/\uFEFF/g, '').split('\n').slice(1);
@@ -133,7 +133,7 @@ document.addEventListener('DOMContentLoaded', () => {
         let message = '';
         const correctRate = score / currentQuizData.length;
         if (correctRate === 1) {
-            message = 'すごい！パーフェクト！理科ダマンはかせだね！';
+            message = 'すごい！パーフェクト！理科はかせだね！';
         } else if (correctRate >= 0.7) {
             message = 'おしい！あともう少し！';
         } else if (correctRate >= 0.4) {
