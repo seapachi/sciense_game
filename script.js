@@ -14,6 +14,7 @@ document.addEventListener('DOMContentLoaded', () => {
     
     const feedbackText = document.getElementById('feedback-text');
     const explanationText = document.getElementById('explanation-text');
+    const explanationImage = document.getElementById('explanation-image');
 
     const scoreText = document.getElementById('score-text');
     const resultMessage = document.getElementById('result-message');
@@ -114,12 +115,24 @@ document.addEventListener('DOMContentLoaded', () => {
         
         explanationText.textContent = `【かいせつ】${question.explanation}`;
         explanationText.style.visibility = 'visible';
+
+        // 解説画像の表示
+        const imagePath = `images/explanations/explain_${String(question.id).padStart(3, '0')}.png`;
+        explanationImage.src = imagePath;
+        explanationImage.onerror = () => {
+            explanationImage.classList.add('hidden');
+        };
+        explanationImage.onload = () => {
+            explanationImage.classList.remove('hidden');
+        };
+
         nextButton.classList.remove('hidden');
     }
 
     // 次の問題へ進む処理
     function nextQuestion() {
         currentQuestionIndex++;
+        explanationImage.classList.add('hidden'); // 次の問題へ進むときに画像を非表示にする
         showQuestion();
     }
 
