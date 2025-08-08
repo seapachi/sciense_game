@@ -11,8 +11,18 @@
     <div id="game-container">
         <!-- スタート画面 -->
         <div id="start-screen" class="screen active">
-            <h1>理科クイズ</h1>
-            <button id="start-button" class="btn">クイズスタート！</button>
+            <h1>🧪 理科クイズ 🧪</h1>
+            <p>小学3年生向けの楽しい理科クイズだよ！<br>がんばって全問正解を目指そう！</p>
+            <button id="start-button" class="btn">スタート</button>
+        </div>
+
+        <!-- クイズ選択画面 -->
+        <div id="quiz-select-screen" class="screen">
+            <h2>🎯 クイズを選んでね！</h2>
+            <div id="quiz-list" class="quiz-list">
+                <!-- JavaScriptで動的に生成 -->
+            </div>
+            <button id="back-to-start-button" class="btn btn-secondary">もどる</button>
         </div>
 
         <!-- クイズ画面 -->

@@ -380,6 +380,131 @@ p {
     margin-right: 10px;
 }
 
+/* スタート画面の改善 */
+#start-screen h1 {
+    font-size: clamp(2.5rem, 8vw, 4rem);
+    margin-bottom: 20px;
+    background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    font-weight: 900;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+}
+
+#start-screen p {
+    font-size: 1.6rem;
+    line-height: 1.6;
+    color: var(--text-color);
+    margin-bottom: 30px;
+    font-weight: 600;
+}
+
+/* クイズ選択画面のスタイル */
+#quiz-select-screen h2 {
+    font-size: clamp(2rem, 6vw, 3rem);
+    margin-bottom: 30px;
+    color: var(--primary-color);
+    font-weight: 800;
+}
+
+.quiz-list {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+    margin-bottom: 30px;
+    width: 100%;
+}
+
+.quiz-card {
+    background: linear-gradient(135deg, #fff, #f8f9fa);
+    border: 3px solid rgba(255, 64, 129, 0.2);
+    border-radius: 20px;
+    padding: 25px;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+    position: relative;
+    overflow: hidden;
+}
+
+.quiz-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 30px rgba(255, 64, 129, 0.2);
+    border-color: var(--primary-color);
+}
+
+.quiz-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+}
+
+.quiz-card-title {
+    font-size: 1.8rem;
+    font-weight: 800;
+    color: var(--primary-color);
+    margin-bottom: 10px;
+}
+
+.quiz-card-description {
+    font-size: 1.4rem;
+    color: var(--text-color);
+    line-height: 1.5;
+    margin-bottom: 15px;
+}
+
+.quiz-card-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 1.2rem;
+    color: var(--accent-color);
+    font-weight: 600;
+}
+
+.quiz-card-count::before {
+    content: '📝 ';
+}
+
+.btn-secondary {
+    background: linear-gradient(135deg, #6c757d, #adb5bd);
+    box-shadow: 0 6px 0 #495057, 0 8px 20px rgba(73, 80, 87, 0.3);
+}
+
+.btn-secondary:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 0 #495057, 0 12px 25px rgba(73, 80, 87, 0.4);
+}
+
+.btn-secondary:active {
+    transform: translateY(-1px);
+    box-shadow: 0 2px 0 #495057, 0 4px 15px rgba(73, 80, 87, 0.2);
+}
+
+/* タブレット以上でのクイズ選択画面 */
+@media (min-width: 768px) {
+    .quiz-list {
+        grid-template-columns: 1fr 1fr;
+        gap: 25px;
+    }
+}
+
+/* クイズヘッダーの改善 */
+#quiz-header {
+    width: 100%;
+    padding: 15px 0 20px 0; /* パディングを調整 */
+    margin-bottom: 15px; /* マージンを調整 */
+    font-size: 1.4rem; /* 固定サイズ */
+    font-weight: bold;
+    color: var(--text-color);
+    text-align: right;
+}
+
 /* ユーティリティ */
 .hidden {
     display: none !important;

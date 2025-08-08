@@ -1,0 +1,18 @@
+{
+  "quizzes": [
+    {
+      "id": "science_basic",
+      "name": "理科クイズ（基本編）",
+      "file": "quiz_data1.csv",
+      "description": "小学3年生向けの基本的な理科問題",
+      "questionCount": 10
+    },
+    {
+      "id": "earth_space",
+      "name": "地球・宇宙クイズ",
+      "file": "quiz_data2.csv",
+      "description": "地球や宇宙、自然現象に関する問題",
+      "questionCount": 10
+    }
+  ]
+}
