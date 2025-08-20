@@ -183,8 +183,63 @@ function showQuestion() {
     nextButton.classList.add('hidden');
 }
 
+// 画像パス解決（命名規則）ユーティリティ
+function zeroPad(num, len = 3) {
+    return String(num).padStart(len, '0');
+}
+
+function buildImageCandidatesByConvention(quizId, questionId) {
+    const pad = zeroPad(questionId);
+    const exts = ['png', 'jpg', 'webp'];
+    const bases = [
+        // 推奨ディレクトリ構成（優先）
+        `images/explanations/${quizId}/explain_${pad}`,
+        `images/explanations/${quizId}/${pad}`,
+        `images/explanations/${quizId}/${questionId}`,
+        // 旧仕様（互換用・最後に試す）
+        `images/explanations/explain_${pad}`
+    ];
+    const candidates = [];
+    const seen = new Set();
+    for (const base of bases) {
+        for (const ext of exts) {
+            const url = `${base}.${ext}`;
+            if (!seen.has(url)) {
+                seen.add(url);
+                candidates.push(url);
+            }
+        }
+    }
+    return candidates;
+}
+
+function tryLoadImage(url) {
+    return new Promise(resolve => {
+        const img = new Image();
+        img.onload = () => resolve(true);
+        img.onerror = () => resolve(false);
+        img.src = url;
+    });
+}
+
+async function setFirstAvailableImage(imgEl, candidates) {
+    imgEl.classList.add('hidden');
+    for (const url of candidates) {
+        // 逐次試行
+        // eslint-disable-next-line no-await-in-loop
+        const ok = await tryLoadImage(url);
+        if (ok) {
+            imgEl.src = url;
+            imgEl.classList.remove('hidden');
+            return true;
+        }
+    }
+    imgEl.removeAttribute('src');
+    return false;
+}
+
 // 答えを選択
-function selectAnswer(selectedIndex) {
+async function selectAnswer(selectedIndex) {
     const question = currentQuizData[currentQuestionIndex];
     const correctAnswer = question.correctAnswer;
     const optionButtons = document.querySelectorAll('.option-btn');
@@ -219,15 +274,12 @@ function selectAnswer(selectedIndex) {
     explanationText.textContent = `【かいせつ】${question.explanation}`;
     explanationText.style.visibility = 'visible';
 
-    // 解説画像の表示
-    const imagePath = `images/explanations/explain_${String(question.id).padStart(3, '0')}.png`;
-    explanationImage.src = imagePath;
-    explanationImage.onerror = () => {
-        explanationImage.classList.add('hidden');
-    };
-    explanationImage.onload = () => {
-        explanationImage.classList.remove('hidden');
-    };
+    // 解説画像の表示（命名規則に基づき候補を順に試す）
+    const quizInfo = availableQuizzes.find(q => q.file === selectedQuizFile);
+    const quizId = quizInfo ? quizInfo.id : 'default';
+    const candidates = buildImageCandidatesByConvention(quizId, question.id);
+    explanationImage.alt = `解説画像（${quizId} 第${question.id}問）`;
+    await setFirstAvailableImage(explanationImage, candidates);
 
     nextButton.classList.remove('hidden');
 }
