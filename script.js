@@ -8,7 +8,8 @@ const startButton = document.getElementById('start-button');
 const backToStartButton = document.getElementById('back-to-start-button');
 const quizList = document.getElementById('quiz-list');
 const nextButton = document.getElementById('next-button');
-const restartButton = document.getElementById('restart-button');
+const retryButton = document.getElementById('retry-button');
+const backToStartFromResultButton = document.getElementById('back-to-start-from-result');
 
 const feedbackText = document.getElementById('feedback-text');
 const explanationText = document.getElementById('explanation-text');
@@ -85,7 +86,8 @@ function setupEventListeners() {
     startButton.addEventListener('click', () => showScreen('quiz-select-screen'));
     backToStartButton.addEventListener('click', () => showScreen('start-screen'));
     nextButton.addEventListener('click', nextQuestion);
-    restartButton.addEventListener('click', restartQuiz);
+    if (retryButton) retryButton.addEventListener('click', retryQuiz);
+    if (backToStartFromResultButton) backToStartFromResultButton.addEventListener('click', () => showScreen('start-screen'));
 }
 
 // 画面切り替え
@@ -312,7 +314,8 @@ function showResult() {
     resultMessage.textContent = message;
 }
 
-// クイズ再開
-function restartQuiz() {
-    showScreen('quiz-select-screen');
+// 同じクイズでもう一度挑戦
+function retryQuiz() {
+    showScreen('quiz-screen');
+    startQuiz();
 }
